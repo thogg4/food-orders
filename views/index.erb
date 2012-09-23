@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Order some food</title>
+    <script type='text/javascript' src='/javascripts/jquery.js'></script>
+    <script type='text/javascript' src='/javascripts/knockout.js'></script>
+    <script type='text/javascript' src='/javascripts/accounting.js'></script>
+    <script type='text/javascript' src='/javascripts/app.js'></script>
+
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class='container'>
+      <div class='navbar'>
+        <div class='navbar-inner'>
+          <ul class='nav'>
+            <li><a href="#" data-bind='click: clickOrderPage'>Order Page</a></li>
+            <li><a href="#" data-bind='click: clickListPage'>List Page</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class='flash alert alert-success hide'>
+      
+    </div>
+
+    <div class='content container'>
+      <div class='order-page page' data-bind='visible: showOrderPage'>
+        <div class='row'>
+          <div class='span4 order-burgers'>
+            <h2>Burgers</h2>
+            <h4>$2.50</h4>
+            <input type="text" class='span1' data-bind='value: burgersQuantity, valueUpdate: "afterkeydown"' />
+          </div>
+          <div class='span4 order-fries'>
+            <h2>Fries</h2>
+            <h4>$1.00</h4>
+            <input type="text" class='span1' data-bind='value: friesQuantity, valueUpdate: "afterkeydown"' />
+          </div>
+          <div class='span4 order-drinks'>
+            <h2>Drinks</h2>
+            <h4>$1.50</h4>
+            <input type="text" class='span1' data-bind='value: drinksQuantity, valueUpdate: "afterkeydown"' />
+          </div>
+        </div>
+        <div class='row'>
+          <div class='span12'>
+            <h1>Total:</h1>
+            <span data-bind='text: grandTotal'></span>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='span5'></div>
+          <div class='span2'>
+            <a href="#" class='btn btn-success large' data-bind='click: saveOrder'>Place Order</a>
+          </div>
+          <div class='span5'></div>
+        </div>
+      </div>
+      <div class='list-page page' data-bind='visible: showListPage'>
+        <div class='row'>
+          <div class='span12'>
+            <table class='table'>
+              <thead>
+                <th>Burgers</th>
+                <th>Fries</th>
+                <th>Drinks</th>
+                <th>Total</th>
+              </thead>
+              <tbody data-bind='foreach: ordersArray'>
+                <td data-bind='text: burgers'></td>
+                <td data-bind='text: fries'></td>
+                <td data-bind='text: drinks'></td>
+                <td data-bind='text: accounting.formatMoney(total)'></td>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

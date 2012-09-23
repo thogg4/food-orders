@@ -1,0 +1,6 @@
+development:
+  sessions:
+    default:
+      database: food_orders
+      hosts:
+        - localhost:27017
